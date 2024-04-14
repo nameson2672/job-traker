@@ -3,7 +3,7 @@ Main Application File for our FastApi Server
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from .router import auth, user
 
 app = FastAPI()
 
@@ -21,6 +21,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth.router)
+app.include_router(user.router)
 
 
 @ app.get("/")
