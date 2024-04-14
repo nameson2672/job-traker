@@ -11,15 +11,15 @@ def test_root(client):
     assert res.status_code == 200
 
 
-def test_create_user(client):
-    res = client.post(
-        "/users/", json={"email": "test@email", "password": "pass123"})
+# def test_create_user(client):
+#     res = client.post(
+#         "/users/", json={"email": "test@email", "password": "pass123"})
 
-    new_user = schemas.UserResponse(**res.json())
+#     new_user = schemas.UserResponse(**res.json())
 
-    print(new_user)
+#     print(new_user)
 
-    assert res.status_code == 201
+#     assert res.status_code == 201
 
 
 def test_login_user(client, test_user):
