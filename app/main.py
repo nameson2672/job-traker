@@ -3,7 +3,8 @@ Main Application File for our FastApi Server
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .router import auth, user
+import uvicorn
+from .router import auth, user, jobs
 
 app = FastAPI()
 
@@ -23,8 +24,10 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(user.router)
+app.include_router(jobs.router)
 
 
 @ app.get("/")
 async def root():
     return {"message": "This is the main page"}
+
