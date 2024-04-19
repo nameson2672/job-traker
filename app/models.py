@@ -2,7 +2,7 @@
 This File is used to store models for our ORM Models, For Postgres Database
 """
 from typing import Hashable
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, UUID, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP

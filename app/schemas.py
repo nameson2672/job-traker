@@ -7,6 +7,8 @@ from pydantic import BaseModel, EmailStr, conint
 
 from datetime import datetime
 
+from sqlalchemy import TIMESTAMP
+
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -33,18 +35,24 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    id: Optional[str]
+    id: Optional[int]
 
 
 class JobInfo(BaseModel):
-    job_id: int
+    id:int = 0
     job_title:str
     job_description:str
     company_name:str
     location:str
+    applied:bool = False
+    created_at: Optional[datetime] = datetime.now()
 
 class JobUrlToAdd(BaseModel):
     url:str
+
+class UpdateJobById(BaseModel):
+    id:int
+    applied:bool
 
 class ScrapedJobInfo:
     def __init__(self, title, desc, comapany, location) -> None:
